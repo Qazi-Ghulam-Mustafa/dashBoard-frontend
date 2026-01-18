@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signUp</title>
+    <style>
+        body {
+            background: rgb(5, 11, 137);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 90px;
+            font-size: 50px;
+            color: white;
+        }
+
+        .container {
+            border: 2px solid black;
+            padding: 30px 0px 15px 0px;
+            width: 350px;
+            /* display: block; */
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            border-radius: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            background: white;
+            border-style: none;
+        }
+
+        input {
+            width: 280px;
+            height: 30px;
+            font-size: 20px;
+            border: 1px solid gray;
+            /* margin: 10px; */
+        }
+
+        h3 {
+            text-align: left;
+        }
+
+        button {
+            margin-top: 18px;
+            height: 45px;
+            width: 150px;
+            cursor: pointer;
+            background: rgb(3, 12, 181);
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sign Up</h1>
+    <div class="container">
+        <h3>Name</h3>
+        <input type="text" name="" id="userName">
+        <br>
+        <b id="nameError" style="color: red;"></b>
+        <h3>Email</h3>
+        <input type="text" name="" id="email">
+        <br>
+        <b id="emailError" style="color: red;"></b>
+        <h3>password</h3>
+        <input type="text" name="" id="password">
+        <br>
+        <b id="passwordError" style="color: red;"></b>
+        <b id="successMessage"></b>
+        <br>
+
+        <button onclick="signUp()">Sign Up</button>
+    </div>
+
+    <script src="signUp.js"></script>
+</body>
+
+</html>
