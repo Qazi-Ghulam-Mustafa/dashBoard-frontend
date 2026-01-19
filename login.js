@@ -9,11 +9,11 @@ var successMessage = document.getElementById("success")
 
 var userObject = [
     //dont give space in key and value ""
-    { userEmail: "new@gmil.com", password: "Abc@gmail.com" },
-    { userEmail: "new1@gmil.com", UserName: "New User", password: "Abc@gmail.com" },
-    { userEmail: "new2@gmil.com", UserName: "New User", password: "Abc@gmail.com" },
-    { userEmail: "new3@gmil.com", UserName: "New User", password: "Abc@gmail.com" },
-    { userEmail: "new4@gmil.com", UserName: "New User", password: "Abc@gmail.com" },
+    { userEmail: "new@gmail.com", password: "Abc@gmail.com" },
+    { userEmail: "new1@gmail.com", password: "Abc@gmail.com" },
+    { userEmail: "new2@gmail.com", password: "Abc@gmail.com" },
+    { userEmail: "new3@gmail.com", password: "Abc@gmail.com" },
+    { userEmail: "new4@gmail.com", password: "Abc@gmail.com" },
 ];
 
 function reDirect() {
@@ -30,20 +30,31 @@ function login() {
     passwordError.innerText = "";
     console.log(email.value, password.value);
 
-    if (email.value === "") {
-        emailError.innerText = "Please enter your email address";
-
+    if (email.value == "") {
+        emailError.innerText = "Please Enter Your Email for Registration"
     }
-
-    if (password.value === "") {
-        passwordError.innerText = "Please enter your login password";
+    else if (!email.value.includes("@")) {
+        emailError.innerText = "Please Enter your valid email address"
     }
-
+    else {
+        emailError.innerText = ""
+        console.log(email.value)
+    }
+    if (password.value == "") {
+        passwordError.innerText = "Please Enter Your Email password"
+    }
+    else if (password.value.length < 8) {
+        passwordError.innerText = "Password should be greater than 8 character"
+    }
+    else {
+        passwordError.innerText = ""
+        console.log(`Password : ${password.value} `)
+    }
     if (email.value !== "" && password.value !== "") {
         var existUser = false;
 
         for (var i = 0; i < userObject.length; i++) {
-            console.log(userObject[i]); 
+            console.log(userObject[i]);
             // console.log(existUser);
             if (
                 userObject[i].userEmail === email.value &&
@@ -56,11 +67,19 @@ function login() {
             }
         }
 
-        if (existUser==false) {
-            emailError.innerText = "Invalid email or password";
+        if (existUser == false) {
+            emailError.innerText = "Email is not valid";
+            passwordError.innerText = "Password is not valid";
+        } else {
+            successMessage.innerText = "Login Successfully"
+            console.log(password.value)
+            // For set items into local storage we use setIems to set key and value. // (setIems is a Local Storage class)
+            localStorage.setItem("login", true)
+            localStorage.setItem("email", email.value)
+            localStorage.setItem("userName", userName.value)
+            setTimeout(() => { window.location.href = "./dashboard.html" }, 1500)
         }
     }
-
     // else if (email.value != userEmail) {
     //     emailError.innerText = "User are not Register"
     // }
