@@ -1,19 +1,16 @@
+var email = document.getElementById("email")
+var password = document.getElementById("password")
+var userName = document.getElementById("userName")
+
+var nameError = document.getElementById("nameError")
+var emailError = document.getElementById("emailError")
+var passwordError = document.getElementById("passwordError")
+var successMessage = document.getElementById("success")
+
 function signUp() {
-    var email = document.getElementById("email")
-    var password = document.getElementById("password")
-    var userName = document.getElementById("userName")
-
-    var nameError = document.getElementById("nameError")
-    var emailError = document.getElementById("emailError")
-    var passwordError = document.getElementById("passwordError")
-
     var userObject = [
         //dont give space in key and value ""
-        { userEmail: "new@gmail.com", UserName: "New User", password: "Abc@gmail.com" },
-        { userEmail: "new1@gmail.com", UserName: "New User 1", password: "Abc@gmail.com" },
-        { userEmail: "new2@gmail.com", UserName: "New User 2", password: "Abc@gmail.com" },
-        { userEmail: "new3@gmail.com", UserName: "New User 3", password: "Abc@gmail.com" },
-        { userEmail: "new4@gmail.com", UserName: "New User 4", password: "Abc@gmail.com" },
+        // { userEmail: "new@gmail.com", UserName: "New User", password: "Abc@gmail.com" },
     ];
 
     if (userName.value == "") {
@@ -63,15 +60,23 @@ function signUp() {
             }
         }
 
-        if (existUser == false) {
-            emailError.innerText = "Email is not valid";
-            nameError.innerText = "";
-            passwordError.innerText = "Password is not valid";
+        if (existUser == true) {
+            emailError.innerText = "Email is already Register";
+            // nameError.innerText = "";
+            // passwordError.innerText = "Password is not valid";
         } else {
-            successMessage.innerText = "Registration Successful"
+            userObject.push({
+                userEmail: email.value,
+                UserName: userName.value,
+                password: password.value,
+            }); 
+            console.log(userObject);
+            // For set items into local storage we use setIems to set key and value. // (setIems is a Local Storage class)
+            localStorage.setItem("Registered Users", JSON.stringify(userObject))
             localStorage.setItem("login", true)
             localStorage.setItem("email", email.value)
             localStorage.setItem("userName", userName.value)
+           // successMessage.innerText = "Registration Successful"
             setTimeout(() => {
                 window.location.href = "./dashboard.html"
             }, 1500);
