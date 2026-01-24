@@ -78,7 +78,7 @@ function signUp() {
             localStorage.setItem("userName", userName.value)
            // successMessage.innerText = "Registration Successful"
             setTimeout(() => {
-                window.location.href = "./dashboard.html"
+                window.location.href = "./login.html"
             }, 1500);
         }
     }

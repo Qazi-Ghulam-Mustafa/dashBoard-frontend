@@ -7,14 +7,6 @@ var successMessage = document.getElementById("success")
 
 
 
-var userObject = [
-    //dont give space in key and value "";
-    // { userEmail: "new@gmail.com", userName:"New User", password: "Abc@gmail.com" },
-    // { userEmail: "new1@gmail.com", userName:"New User 1", password: "Abc@gmail.com" },
-    // { userEmail: "new2@gmail.com", userName:"New User 2", password: "Abc@gmail.com" },
-    // { userEmail: "new3@gmail.com", userName:"New User 3", password: "Abc@gmail.com" },
-    // { userEmail: "new4@gmail.com", userName:"New User 4", password: "Abc@gmail.com" },
-];
 
 function reDirect() {
     var status = localStorage.getItem("login")
@@ -29,6 +21,15 @@ function login() {
     emailError.innerText = "";
     passwordError.innerText = "";
     console.log(email.value, password.value);
+    var userObject = [
+        //dont give space in key and value "";
+        // { userEmail: "new@gmail.com", userName:"New User", password: "Abc@gmail.com" },
+        // { userEmail: "new1@gmail.com", userName:"New User 1", password: "Abc@gmail.com" },
+        // { userEmail: "new2@gmail.com", userName:"New User 2", password: "Abc@gmail.com" },
+        // { userEmail: "new3@gmail.com", userName:"New User 3", password: "Abc@gmail.com" },
+        // { userEmail: "new4@gmail.com", userName:"New User 4", password: "Abc@gmail.com" },
+    ];
+
 
     if (email.value == "") {
         emailError.innerText = "Please Enter Your Email for Registration"
@@ -71,12 +72,12 @@ function login() {
             emailError.innerText = "Email is not valid";
             passwordError.innerText = "Password is not valid";
         } else {
+            passwordError.innerText = ""
             successMessage.innerText = "Login Successfully"
             console.log(password.value)
             // For set items into local storage we use setIems to set key and value. // (setIems is a Local Storage class)
             localStorage.setItem("login", true)
             localStorage.setItem("email", email.value)
-            localStorage.setItem("userName", userName.value)
             setTimeout(() => { window.location.href = "./dashboard.html" }, 1500)
         }
     }
@@ -91,13 +92,7 @@ function login() {
     //     passwordError.innerText = "Invalid Password"
     // }
     // else {
-    //     passwordError.innerText = ""
-    //     successMessage.innerText = "Login Successfully"
-    //     console.log(password.value)
-    //     // For set items into local storage we use setIems to set key and value. // (setIems is a Local Storage class)
-    //     localStorage.setItem("login", true)
-    //     localStorage.setItem("email", email.value)
-    //     setTimeout(() => { window.location.href = "./dashboard.html" }, 1500)
+    //    
     // }
 }
 
