@@ -5,13 +5,14 @@ var userName = document.getElementById("userName")
 var nameError = document.getElementById("nameError")
 var emailError = document.getElementById("emailError")
 var passwordError = document.getElementById("passwordError")
-var successMessage = document.getElementById("success")
+var successMessage = document.getElementById("successMessage")
 
 function signUp() {
-    var userObject = [
-        //dont give space in key and value ""
-        // { userEmail: "new@gmail.com", UserName: "New User", password: "Abc@gmail.com" },
-    ];
+   var userObject =  localStorage.getItem("Registered Users")
+    if(userObject!=null){
+        userObject= JSON.parse(userObject)
+
+    }
 
     if (userName.value == "") {
         nameError.innerText = "PLease Enter Your User Name"
@@ -69,14 +70,15 @@ function signUp() {
                 userEmail: email.value,
                 UserName: userName.value,
                 password: password.value,
+                status: false
             }); 
             console.log(userObject);
             // For set items into local storage we use setIems to set key and value. // (setIems is a Local Storage class)
             localStorage.setItem("Registered Users", JSON.stringify(userObject))
-            localStorage.setItem("login", true)
-            localStorage.setItem("email", email.value)
-            localStorage.setItem("userName", userName.value)
-           // successMessage.innerText = "Registration Successful"
+            // localStorage.setItem("login", true)
+            // localStorage.setItem("email", email.value)
+             localStorage.setItem("userName", userName.value)
+            successMessage.innerText = "Registration Successful"
             setTimeout(() => {
                 window.location.href = "./login.html"
             }, 1500);

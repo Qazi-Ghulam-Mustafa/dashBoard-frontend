@@ -8,27 +8,24 @@ var successMessage = document.getElementById("success")
 
 
 
-function reDirect() {
-    var status = localStorage.getItem("login")
-    if (status) {
-        window.location.href = "./dashboard.html"
-    }
-}
+// function reDirect() {
+//     var status = localStorage.getItem("login")
+//     if (status) {
+//         window.location.href = "./dashboard.html"
+//     }
+// }
 
-reDirect()
+// reDirect()
 
 function login() {
     emailError.innerText = "";
     passwordError.innerText = "";
     console.log(email.value, password.value);
-    var userObject = [
-        //dont give space in key and value "";
-        // { userEmail: "new@gmail.com", userName:"New User", password: "Abc@gmail.com" },
-        // { userEmail: "new1@gmail.com", userName:"New User 1", password: "Abc@gmail.com" },
-        // { userEmail: "new2@gmail.com", userName:"New User 2", password: "Abc@gmail.com" },
-        // { userEmail: "new3@gmail.com", userName:"New User 3", password: "Abc@gmail.com" },
-        // { userEmail: "new4@gmail.com", userName:"New User 4", password: "Abc@gmail.com" },
-    ];
+    var userObject =  localStorage.getItem("Registered Users")
+    if(userObject!=null){
+        userObject= JSON.parse(userObject)
+
+    }
 
 
     if (email.value == "") {

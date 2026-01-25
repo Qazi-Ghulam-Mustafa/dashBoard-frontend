@@ -16,7 +16,9 @@ function setUserEmail() {
 }
 
 function logout() {
-    localStorage.clear()
+    localStorage.setItem("login",false)
+        localStorage.setItem("email","")
+    
     window.location.href = "./login.html"
 }
 
